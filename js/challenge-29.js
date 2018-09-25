@@ -83,9 +83,8 @@
         return document.createElement(element);
       },
 
-      removeRow: function removeRow(id) {
-        var $button = document.getElementById(id);
-        var $tr = $button.parentNode.parentNode;
+      removeRow: function removeRow(event) {
+        var $tr = document.getElementById(event.target.id);
         $tr.remove();
       },
 
@@ -93,6 +92,7 @@
         var id = Math.floor(Math.random() * 1000);
         var $fragment = document.createDocumentFragment();
         var $tr = document.createElement('tr');
+        $tr.setAttribute('id', id);
 
         var $tdImage = this.createEl('td');
         var $image = this.createEl('img');
@@ -113,7 +113,7 @@
         $buttonRemove.setAttribute('type', 'button');
         $buttonRemove.setAttribute('id', id);
         $buttonRemove.textContent = 'remover';
-        $buttonRemove.addEventListener('click', () => this.removeRow(id));
+        $buttonRemove.addEventListener('click', this.removeRow);
         $tdRemove.appendChild($buttonRemove);
 
         $tr.appendChild($tdImage);
