@@ -105,7 +105,6 @@
       },
 
       deleteCar: function deleteCar(plate) {
-        console.log(plate);
         var ajax = new XMLHttpRequest();
         ajax.open('DELETE', 'http://localhost:3000/car');
         ajax.setRequestHeader(
